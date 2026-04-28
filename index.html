@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Sneha! 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ✨ CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- 🌟 LOADING SCREEN -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-hearts">
+        <span>💖</span><span>✨</span><span>🎀</span><span>✨</span><span>💖</span>
+      </div>
+      <p class="loading-text">Preparing something special...</p>
+      <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
+    </div>
+  </div>
+
+  <!-- 🎉 FLOATING PARTICLES CANVAS -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ==============================
+       PAGE 1 — LANDING
+  ================================= -->
+  <section class="page active" id="page1">
+    <div class="page1-content">
+      <div class="ribbon-top">🎀 A Special Message For You 🎀</div>
+
+      <div class="landing-emoji-row">
+        <span class="float-emoji" style="--d:0s">🎉</span>
+        <span class="float-emoji" style="--d:.3s">🌸</span>
+        <span class="float-emoji" style="--d:.6s">✨</span>
+        <span class="float-emoji" style="--d:.9s">🎈</span>
+        <span class="float-emoji" style="--d:1.2s">💫</span>
+      </div>
+
+      <h1 class="landing-title" id="landingTitle">
+        It's your special day <span class="yeyey">yeyey!</span> 🎉
+      </h1>
+
+      <p class="landing-sub" id="landingSub">Do you wanna see what I made for you?</p>
+
+      <div class="btn-group" id="btnGroup">
+        <button class="btn-yes" id="btnYes" onclick="goToPage2()">
+          <span class="btn-inner">YES 🥳</span>
+          <div class="btn-glow"></div>
+        </button>
+        <button class="btn-no" id="btnNo" onclick="handleNo()">
+          <span class="btn-inner">NO 🙄</span>
+        </button>
+      </div>
+
+      <!-- No popup -->
+      <div class="no-popup" id="noPopup">
+        <div class="no-popup-inner">
+          <p>⚠️ Are you sureeee?? 😤</p>
+          <p class="no-sub">Like... REALLY sure? 👀</p>
+          <button class="btn-yes small" onclick="handleNo2()">Okay fine I'm sure 😒</button>
+          <button class="btn-yes small" style="margin-left:10px" onclick="closeNoPopup()">Wait no go back! 😭</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       PAGE 2 — MAIN PARTY PAGE
+  ================================= -->
+  <section class="page" id="page2">
+
+    <!-- Lights overlay -->
+    <div class="lights-overlay" id="lightsOverlay"></div>
+
+    <div class="page2-content">
+
+      <div class="typing-wrap">
+        <p class="typing-text" id="typingText"></p>
+        <span class="typing-cursor">|</span>
+      </div>
+
+      <!-- BUTTONS GRID -->
+      <div class="feature-grid" id="featureGrid">
+
+        <!-- 1. Lights -->
+        <button class="feat-btn" id="btnLights" onclick="toggleLights()" style="--clr:#ffe066;--clr2:#ffb347">
+          <span class="feat-icon">🎇</span>
+          <span class="feat-label">Lights On</span>
+          <div class="feat-ripple"></div>
+        </button>
+
+        <!-- 2. Music -->
+        <button class="feat-btn" id="btnMusic" onclick="toggleMusic()" style="--clr:#ff6eb4;--clr2:#c84b8a">
+          <span class="feat-icon">🎵</span>
+          <span class="feat-label">Play Music</span>
+          <div class="equalizer" id="equalizer">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="feat-ripple"></div>
+        </button>
+
+        <!-- 3. Decorate -->
+        <button class="feat-btn" id="btnDecorate" onclick="toggleDecorate()" style="--clr:#b388ff;--clr2:#7c43bd">
+          <span class="feat-icon">🎂</span>
+          <span class="feat-label">Decorate!</span>
+          <div class="feat-ripple"></div>
+        </button>
+
+        <!-- 4. Message -->
+        <button class="feat-btn" id="btnMessage" onclick="openMessage()" style="--clr:#ff8a80;--clr2:#e53935">
+          <span class="feat-icon">💌</span>
+          <span class="feat-label">I have a message</span>
+          <div class="feat-ripple"></div>
+        </button>
+
+        <!-- 5. Memories -->
+        <button class="feat-btn wide" id="btnMemories" onclick="openMemories()" style="--clr:#80d8ff;--clr2:#0288d1">
+          <span class="feat-icon">🖼️</span>
+          <span class="feat-label">Wanna see our memories?</span>
+          <div class="feat-ripple"></div>
+        </button>
+
+      </div><!-- /feature-grid -->
+
+      <!-- DECORATION LAYER -->
+      <div class="decoration-layer" id="decorationLayer">
+        <div class="cake-wrap" id="cakeWrap">
+          <div class="cake">
+            <div class="candles-row">
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+            </div>
+            <div class="cake-top"></div>
+            <div class="cake-mid"></div>
+            <div class="cake-bot"></div>
+            <div class="cake-plate"></div>
+          </div>
+        </div>
+        <div class="balloons-row" id="balloonsRow">
+          <div class="balloon" style="--bc:#ff6eb4;--bl:15%">🎈</div>
+          <div class="balloon" style="--bc:#ffe066;--bl:30%">🎈</div>
+          <div class="balloon" style="--bc:#b388ff;--bl:55%">🎈</div>
+          <div class="balloon" style="--bc:#80d8ff;--bl:70%">🎈</div>
+          <div class="balloon" style="--bc:#ff8a80;--bl:85%">🎈</div>
+        </div>
+      </div>
+
+    </div><!-- /page2-content -->
+
+    <!-- =====================
+         MESSAGE MODAL
+    ======================== -->
+    <div class="modal-overlay" id="messageModal">
+      <div class="message-card" id="messageCard">
+        <button class="modal-close" onclick="closeMessage()">✕</button>
+
+        <div class="card-header">
+          <span class="card-rose">🌸</span>
+          <h2 class="card-title">Dear leli sis</h2>
+          <span class="card-rose">🌸</span>
+        </div>
+
+        <!-- LIVE COUNTER -->
+        <div class="counter-section">
+          <p class="counter-label">The world just got luckier since...</p>
+          <div class="counter-grid">
+            <div class="counter-item"><span class="counter-num" id="cDays">0</span><span class="counter-unit">Days</span></div>
+            <div class="counter-sep">:</div>
+            <div class="counter-item"><span class="counter-num" id="cHours">0</span><span class="counter-unit">Hours</span></div>
+            <div class="counter-sep">:</div>
+            <div class="counter-item"><span class="counter-num" id="cMins">0</span><span class="counter-unit">Minutes</span></div>
+            <div class="counter-sep">:</div>
+            <div class="counter-item"><span class="counter-num" id="cSecs">0</span><span class="counter-unit">Seconds</span></div>
+          </div>
+        </div>
+
+        <!-- MESSAGE TEXT -->
+        <div class="message-body" id="messageBody">
+          <p class="msg-line" style="--i:0">Even though we have met recently & i guess we know nothing about eachother but this was the way for me to show you that how much you mean to me,🤍</p>
+          <p class="msg-line" style="--i:1">Majhe majhe eto rag hoy je mone hoy aar kotha bolbo na…😤,</p>
+          <p class="msg-line" style="--i:2"> amader eto jhogra hoy je onno keu hole onek age block kore dito, Somporko sesh kore dito😆</p>
+          <p class="msg-line" style="--i:3">But still, ei kodin e amra koto kichu korechi — jhogra korechi, ekjon arekjon ke roast korechi, majhe majhe PNPC o korechi… Aar sab theke important, amra onek memory baniachi— aar age aro onek banabo, obviously 😌</p>
+          <p class="msg-line" style="--i:5">tui khub bhalo ekta manus. Tui baire theke pagol aar biroktokor holeo, vitore theke kintu caring. Eta sobai bujhbe na, but I know.,<em>(aita kintu ami yearki marlam)</em> 😄</p>
+          <p class="msg-line" style="--i:6">So haan, aajke tor birthday — bhalo kore enjoy kor, cake kha, aar treat ta pore bhalo kore khaie dis 🤭</p>
+
+          <p class="msg-special">
+            and on your special day, I wish you the Happiest Birthday. <br/>Your bro is always with you ❤️
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <span>🎂</span> <span>✨</span> <span>🎉</span> <span>🌸</span> <span>💖</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================
+         MEMORIES MODAL
+    ======================== -->
+    <div class="modal-overlay" id="memoriesModal">
+      <div class="memories-card">
+        <button class="modal-close" onclick="closeMemories()">✕</button>
+        <h2 class="memories-title">Our Memories 📸✨</h2>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Dynamically generated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lb-close" onclick="closeLightbox()">✕</button>
+      <button class="lb-prev" id="lbPrev" onclick="lbNav(-1,event)">❮</button>
+      <img class="lb-img" id="lbImg" src="" alt="Memory"/>
+      <button class="lb-next" id="lbNext" onclick="lbNav(1,event)">❯</button>
+    </div>
+
+  </section><!-- /page2 -->
+
+  <!-- CONFETTI CONTAINER -->
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <!-- AUDIO -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg"/>
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
